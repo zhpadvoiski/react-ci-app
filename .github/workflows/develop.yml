@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Grab Node version
+        id: nvmrc
+        run: cat .nvmrc
+      - name: Setup NodeJs
+        # uses: actions/setup-node@v3
+        # with:
+        #   node_version: ${{github.steps.nvmrc.outputs}}
+        run: echo "${{github.steps.nvmrc.outputs}}""
+      # - name: Install dependencies
