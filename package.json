@@ -22,7 +22,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format:check": "prettier --check \"**/*.{js,ts,jsx,tsx,md,yml,yaml,json,css}\"",
-    "format": "prettier --write \"**/*.{js,ts,jsx,tsx,md,yml,yaml,json,css}\" --ignore-unknown"
+    "format": "prettier --write \"**/*.{js,ts,jsx,tsx,md,yml,yaml,json,css}\" --ignore-unknown",
+    "nuke": "rm -rf node_modules"
   },
   "eslintConfig": {
     "extends": [
