@@ -26,11 +26,13 @@ jobs:
         if: github.event_name == 'push'
         run: npm run build
       - name: Upload artifacts
+        if: github.event_name == 'push'
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./build
   deploy:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     needs: [build]
     permissions:
       pages: write
