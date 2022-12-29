@@ -8,13 +8,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Grab Node version
-        id: nvmrc
-        run: cat .nvmrc >> $GITHUB_OUTPUT
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Setup NodeJs
-        # uses: actions/setup-node@v3
-        # with:
-        #   node_version: ${{github.steps.nvmrc.outputs}}
-        run: echo "${{github.steps.nvmrc.outputs}}""
-      # - name: Install dependencies
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: ${{github.steps.nvmrc.outputs}}
+      - name: Install dependencies
+        run: npm ci
+      - name: Check styles
+        run: npm run format:check
+      - name: Unit tests
+        run: npm run test -- --coverage
