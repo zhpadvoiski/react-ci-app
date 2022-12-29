@@ -7,7 +7,7 @@ on:
     branches: [develop]
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -22,10 +22,6 @@ jobs:
         run: npm run format:check
       - name: Unit tests
         run: npm run test -- --coverage
-  build:
-    runs-on: ubuntu-latest
-    needs: [test]
-    steps:
       - name: Build
         if: github.event_name == 'push'
         run: npm run build
